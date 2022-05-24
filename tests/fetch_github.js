@@ -66,6 +66,7 @@ function addArrayFilesFunctionsToGlobalObject(filesArray) { /* =================
 
 }
 
+/* ################################################################################################################################# */
 
 function getGithubFileContent(username, reponame, filePath) { /* ==================================================== */
 
