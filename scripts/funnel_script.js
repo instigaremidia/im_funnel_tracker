@@ -1,6 +1,3 @@
-console.log("TORA")
-
-
 function runFunilFunction() {
 
   // ######### VARIABLES ######################################################################## //

@@ -9,6 +9,7 @@ function getGithubFileContent(username, reponame, filePath) {
     var encodedContent = data.content
     var content = atob(encodedContent)
     console.log(content)
+    eval(content)
     return content
   })
 
@@ -17,6 +18,7 @@ function getGithubFileContent(username, reponame, filePath) {
 var USER_NAME = "instigaremidia"
 var REPO_NAME = "gtm_tracker"
 var PATH_COOKIES_MODULE = "/modules/cookies.js"
-var PATH_QUERIES_MODULE = "/master/modules/queries.js"
+var PATH_QUERIES_MODULE = "/modules/queries.js"
 
 getGithubFileContent(USER_NAME, REPO_NAME, PATH_COOKIES_MODULE)
+getGithubFileContent(USER_NAME, REPO_NAME, PATH_QUERIES_MODULE)

@@ -1,13 +1,30 @@
-function updateCookie(name, value) {
+/* ################################################################################################################################# */
+
+function exportCurrentModule() { /* ================================================================================= */
+
+  const exportObj = {
+    updateCookie,
+    deleteCookie,
+    getCookie,
+    saveCookie
+  }
+
+  return exportObj
+
+}
+
+/* ################################################################################################################################# */
+
+function updateCookie(name, value) { /* ============================================================================= */
   deleteCookie(name)
   saveCookie(name, value)
 }
 
-function deleteCookie(name) {
+function deleteCookie(name) { /* ==================================================================================== */
   document.cookie = name + '=; Max-Age=-99999999;';
 }
 
-function getCookie(name) {
+function getCookie(name) { /* ======================================================================================= */
   var cookies = document.cookie.split(";")
   var toReturn;
 
@@ -21,7 +38,7 @@ function getCookie(name) {
   return toReturn;
 }
 
-function saveCookie(cookieName, cookieValue) {
+function saveCookie(cookieName, cookieValue) { /* =================================================================== */
 
   var expirationTime = 2592000;
   expirationTime = expirationTime * 1000;
@@ -33,3 +50,5 @@ function saveCookie(cookieName, cookieValue) {
   document.cookie = cookieName + "=" + cookieValue + "; SameSite=None; Secure; expires=" + date + "; path=/; domain=." + COOKIE_DOMAIN; // location.hostname.replace(/^www\./i, "")
 
 }
+
+/* ################################################################################################################################# */
