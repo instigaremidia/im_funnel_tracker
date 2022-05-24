@@ -1,4 +1,60 @@
 
+async function getGithubFileContent(githubFileLink) {
+  // var response = await fetch(githubFileLink)
+  // var responseJson = await response.json()
+  // var encodedContent = responseJson.content
+  // var content = atob(encodedContent)
+  // console.log(content)
+  // return content
+}
+
+/*
+
+function getGithubFileContent(githubFileLink){
+
+  fetch(githubFileLink).then(response => {
+    return response.json()
+  }).then(data => {
+    const content = data.content
+    const fileContents = atob(content)
+    return fileContents
+  })
+
+}
+
+getGithubFileContent("https://api.github.com/repos/instigaremidia/gtm_tracker/contents/teste.js")
+
+
+
+*/
+
+/*
+
+const decodeBase64 = str => {
+utf8Bytes = decodeURIComponent(str).replace(/%([0-9A-F]{2})/g, function (match, p1) {
+  return String.fromCharCode('0x' + p1);
+});
+
+return utf8Bytes
+
+}
+
+const url = "https://raw.githubusercontent.com/instigaremidia/gtm_tracker/master/teste.js"
+
+fetch(url).then(response => {
+  console.log(response)
+  return response.text()
+}).then(data => {
+  console.log(data)
+})
+
+FILE - https://github.com/instigaremidia/gtm_tracker/blob/master/teste.js
+RAW - https://raw.githubusercontent.com/instigaremidia/gtm_tracker/master/teste.js
+API REPO - https://api.github.com/repos/instigaremidia/gtm_tracker
+API FILE - https://api.github.com/repos/instigaremidia/gtm_tracker/contents/teste.js
+
+*/
+
 utm_source=FaceAds
 utm_medium={{adset.name}}
 utm_campaign={{campaign.name}}
