@@ -4,7 +4,7 @@ function exportCurrentModule() { /* ============================================
 
   const exportObj = {
     runFunnelFunctionWhenReady,
-    runFunnelFunction
+    // runFunnelFunction
   }
 
   return exportObj
@@ -16,7 +16,7 @@ function exportCurrentModule() { /* ============================================
 function runFunnelFunctionWhenReady() { /* =========================================================================== */
 
   console.log("CHECKED!")
-  
+
   function checkConditions() {
 
     try {
@@ -24,7 +24,7 @@ function runFunnelFunctionWhenReady() { /* =====================================
       if (typeof gtag === "function") {
         return true
       } else {
-        return false
+        return true // false
       }
   
     } catch (e) {
@@ -47,7 +47,6 @@ function runFunnelFunctionWhenReady() { /* =====================================
 function runFunnelFunction() {  /* =================================================================================== */
 
   // ######### VARIABLES ######################################################################## //
-
   console.log("INIT FUNIL FUNCTION")
 
   // ######### CHECK IF IS FIRST SESSION ######################################################## //

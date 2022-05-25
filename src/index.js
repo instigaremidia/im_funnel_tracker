@@ -27,6 +27,7 @@ addArrayFilesFunctionsToGlobalObject(GLOBAL_FUNCTIONS_TO_IMPORT)
 runWhenAllFunctionsAreReady(GLOBAL_FUNCTIONS_TO_IMPORT, initFunction)
 
 function initFunction(){
+  console.log(globalThis)
   console.log(GLOBAL_FUNCTIONS)
   console.log(GLOBAL_VARIABLES)
   GLOBAL_FUNCTIONS.runFunnelFunctionWhenReady()
