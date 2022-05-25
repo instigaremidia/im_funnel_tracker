@@ -27,13 +27,12 @@ function getIpInfo() { /* ======================================================
   fetch(url).then(function (response) {
     return response.json()
   })
-    .then(function (data) {
-      USER_IP_ADDRESS = data.YourFuckingIPAddress
-      USER_LOCATION = data.YourFuckingLocation
-
-      pushEntryToDataLayer("LVT_ip_event", "LVT_ip", USER_IP_ADDRESS)
-      saveCookie("LVT_ip", USER_IP_ADDRESS)
-    })
+  .then(function (data) {
+    GLOBAL_VARIABLES.USER_IP_ADDRESS = data.YourFuckingIPAddress
+    GLOBAL_VARIABLES.USER_LOCATION = data.YourFuckingLocation
+    saveCookie("LVT_ip", GLOBAL_VARIABLES.USER_IP_ADDRESS)
+    // pushEntryToDataLayer("LVT_ip_event", "LVT_ip", USER_IP_ADDRESS)
+  })
 
 }
 

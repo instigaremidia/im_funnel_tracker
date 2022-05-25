@@ -18,16 +18,20 @@ function exportCurrentModule() { /* ============================================
 
 function getFirstAccessinfo() { /* ================================================================================== */
 
+  var getDataLayerInfo = GLOBAL_FUNCTIONS.getDataLayerInfo
+  var getDateInfo = GLOBAL_FUNCTIONS.getDateInfo
+  var getQueryParams = GLOBAL_FUNCTIONS.getQueryParams
+
   var queryObj = getQueryParams()
   var dataModel = getDataLayerInfo()
   var dateInfo = getDateInfo()
   var firstAccessObj = {}
 
-  firstAccessObj['store_sheet'] = STORE_SHEET_NAME
-  firstAccessObj['ip'] = USER_IP_ADDRESS
-  firstAccessObj['location'] = USER_LOCATION
+  firstAccessObj['store_sheet'] = GLOBAL_VARIABLES.STORE_SHEET_NAME
+  firstAccessObj['ip'] = GLOBAL_VARIABLES.USER_IP_ADDRESS
+  firstAccessObj['location'] = GLOBAL_VARIABLES.USER_LOCATION
 
-  firstAccessObj['page'] = CURRENT_FUNIL_PAGE
+  firstAccessObj['page'] = GLOBAL_VARIABLES.CURRENT_FUNIL_PAGE
   firstAccessObj['date'] = dateInfo.currentDate
   firstAccessObj['time'] = dateInfo.currentTime
 
@@ -53,13 +57,16 @@ function getFirstAccessinfo() { /* =============================================
 
 function getCheckoutInfo() { /* ===================================================================================== */
 
+  var getDataLayerInfo = GLOBAL_FUNCTIONS.getDataLayerInfo
+  var getDateInfo = GLOBAL_FUNCTIONS.getDateInfo
+
   var dataModel = getDataLayerInfo()
   var dateInfo = getDateInfo()
   var checkoutObj = {}
 
-  checkoutObj['store_sheet'] = STORE_SHEET_NAME
-  checkoutObj['ip'] = COOKIE_IP
-  checkoutObj['page'] = CURRENT_FUNIL_PAGE
+  checkoutObj['store_sheet'] = GLOBAL_VARIABLES.STORE_SHEET_NAME
+  checkoutObj['ip'] = GLOBAL_VARIABLES.COOKIE_IP
+  checkoutObj['page'] = GLOBAL_VARIABLES.CURRENT_FUNIL_PAGE
   checkoutObj['date'] = dateInfo.currentDate
   checkoutObj['time'] = dateInfo.currentTime
 
@@ -71,12 +78,14 @@ function getCheckoutInfo() { /* ================================================
 
 function getAddressInfo() { /* ====================================================================================== */
 
+  var getDateInfo = GLOBAL_FUNCTIONS.getDateInfo
+
   var dateInfo = getDateInfo()
   var addressObj = {}
 
-  addressObj['store_sheet'] = STORE_SHEET_NAME
-  addressObj['ip'] = COOKIE_IP
-  addressObj['page'] = CURRENT_FUNIL_PAGE
+  addressObj['store_sheet'] = GLOBAL_VARIABLES.STORE_SHEET_NAME
+  addressObj['ip'] = GLOBAL_VARIABLES.COOKIE_IP
+  addressObj['page'] = GLOBAL_VARIABLES.CURRENT_FUNIL_PAGE
   addressObj['date'] = dateInfo.currentDate
   addressObj['time'] = dateInfo.currentTime
 
@@ -103,13 +112,16 @@ function getAddressInfo() { /* =================================================
 
 function getPaymentInfo() { /* ====================================================================================== */
 
+  var getDataLayerInfo = GLOBAL_FUNCTIONS.getDataLayerInfo
+  var getDateInfo = GLOBAL_FUNCTIONS.getDateInfo
+
   var dataModel = getDataLayerInfo()
   var dateInfo = getDateInfo()
   var paymentObj = {}
 
-  paymentObj['store_sheet'] = STORE_SHEET_NAME
-  paymentObj['ip'] = COOKIE_IP
-  paymentObj['page'] = CURRENT_FUNIL_PAGE
+  paymentObj['store_sheet'] = GLOBAL_VARIABLES.STORE_SHEET_NAME
+  paymentObj['ip'] = GLOBAL_VARIABLES.COOKIE_IP
+  paymentObj['page'] = GLOBAL_VARIABLES.CURRENT_FUNIL_PAGE
   paymentObj['date'] = dateInfo.currentDate
   paymentObj['time'] = dateInfo.currentTime
 
@@ -129,13 +141,16 @@ function getPaymentInfo() { /* =================================================
 
 function getPurchaseInfo() { /* ===================================================================================== */
 
+  var getDataLayerInfo = GLOBAL_FUNCTIONS.getDataLayerInfo
+  var getDateInfo = GLOBAL_FUNCTIONS.getDateInfo
+
   var dataModel = getDataLayerInfo()
   var dateInfo = getDateInfo()
   var purchaseObj = {}
 
-  purchaseObj['store_sheet'] = STORE_SHEET_NAME
-  purchaseObj['ip'] = COOKIE_IP
-  purchaseObj['page'] = CURRENT_FUNIL_PAGE
+  purchaseObj['store_sheet'] = GLOBAL_VARIABLES.STORE_SHEET_NAME
+  purchaseObj['ip'] = GLOBAL_VARIABLES.COOKIE_IP
+  purchaseObj['page'] = GLOBAL_VARIABLES.CURRENT_FUNIL_PAGE
   purchaseObj['date'] = dateInfo.currentDate
   purchaseObj['time'] = dateInfo.currentTime
 

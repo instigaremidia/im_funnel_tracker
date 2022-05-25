@@ -20,18 +20,18 @@ function runFunnelFunctionWhenReady() { /* =====================================
   function checkConditions() {
 
     try {
-  
+
       if (typeof gtag === "function") {
         return true
       } else {
         return true // false
       }
-  
+
     } catch (e) {
       return false
     }
   }
-  
+
   var shouldRunFunction = checkConditions()
 
   if (shouldRunFunction) {
@@ -49,15 +49,20 @@ function runFunnelFunction() {  /* =============================================
   // ######### VARIABLES ######################################################################## //
   console.log("INIT FUNIL FUNCTION")
 
+  var getCookie = GLOBAL_FUNCTIONS.getCookie
+  var getIpInfo = GLOBAL_FUNCTIONS.getIpInfo
+  var saveCookie = GLOBAL_FUNCTIONS.saveCookie
+  var COOKIE_DOMAIN = GLOBAL_VARIABLES.COOKIE_DOMAIN
+
   // ######### CHECK IF IS FIRST SESSION ######################################################## //
-  IS_FIRST_SESSION = GLOBAL_FUNCTIONS.getCookie("LVT_is_first_session")
+  IS_FIRST_SESSION = getCookie("LVT_is_first_session")
   if (!IS_FIRST_SESSION) {
-    IS_FIRST_SESSION = true
-    GLOBAL_FUNCTIONS.getIpInfo()
-    GLOBAL_FUNCTIONS.saveCookie("LVT_is_first_session", false, GLOBAL_VARIABLES.COOKIE_DOMAIN)
-    GLOBAL_FUNCTIONS.saveCookie("LVT_funil_maximun_step", 1, GLOBAL_VARIABLES.COOKIE_DOMAIN)
+    GLOBAL_VARIABLES.IS_FIRST_SESSION = true
+    getIpInfo()
+    saveCookie("LVT_is_first_session", false, COOKIE_DOMAIN)
+    saveCookie("LVT_funil_maximun_step", 1, COOKIE_DOMAIN)
   } else {
-    COOKIE_IP = GLOBAL_FUNCTIONS.getCookie("LVT_ip")
+    GLOBAL_VARIABLES.COOKIE_IP = getCookie("LVT_ip")
   }
 
   // ######### CHECK PAGE ####################################################################### //
@@ -67,26 +72,26 @@ function runFunnelFunction() {  /* =============================================
 
   if (hostname === CHECKOUT_URL) {
 
-    CURRENT_FUNIL_PAGE = "checkout_initial_page"
+    GLOBAL_VARIABLES.CURRENT_FUNIL_PAGE = "checkout_initial_page"
 
-    console.log("CURRENT PAGE: " + CURRENT_FUNIL_PAGE)
+    console.log("CURRENT PAGE: " + GLOBAL_VARIABLES.CURRENT_FUNIL_PAGE)
     checkoutStepLoop()
 
   } else {
 
     if (pathname === "/") {
-      CURRENT_FUNIL_PAGE = "home_page"
+      GLOBAL_VARIABLES.CURRENT_FUNIL_PAGE = "home_page"
     } else if (pathname.search("products") > -1) {
-      CURRENT_FUNIL_PAGE = "product_page"
+      GLOBAL_VARIABLES.CURRENT_FUNIL_PAGE = "product_page"
     } else if (pathname === "/pages/rastrear-pedido") {
-      CURRENT_FUNIL_PAGE = "track_order_page"
+      GLOBAL_VARIABLES.CURRENT_FUNIL_PAGE = "track_order_page"
     } else if (pathname === "/collections/all") {
-      CURRENT_FUNIL_PAGE = "all_products_page"
+      GLOBAL_VARIABLES.CURRENT_FUNIL_PAGE = "all_products_page"
     } else if (pathname.search("/collections") > -1) {
-      CURRENT_FUNIL_PAGE = "collection_page"
+      GLOBAL_VARIABLES.CURRENT_FUNIL_PAGE = "collection_page"
     }
 
-    console.log("CURRENT PAGE: " + CURRENT_FUNIL_PAGE)
+    console.log("CURRENT PAGE: " + GLOBAL_VARIABLES.CURRENT_FUNIL_PAGE)
     storePagesLoop()
 
   }
@@ -98,9 +103,16 @@ function runFunnelFunction() {  /* =============================================
 
   function ifItIsFirstAcessSaveData() { /* ================================= */
 
-    var hasIpInformation = USER_IP_ADDRESS !== ""
-
-    if (IS_FIRST_SESSION === true) {
+    var getFirstAccessinfo = GLOBAL_FUNCTIONS.getFirstAccessinfo
+    var objectToQuery = GLOBAL_FUNCTIONS.objectToQuery
+    var fireFacebookEvent = GLOBAL_FUNCTIONS.fireFacebookEvent
+    var fireGoogleEvent = GLOBAL_FUNCTIONS.fireGoogleEvent
+    var sendDataToApi = GLOBAL_FUNCTIONS.sendDataToApi
+    var getCookie = GLOBAL_FUNCTIONS.getCookie
+    
+    if (GLOBAL_VARIABLES.IS_FIRST_SESSION === true) {
+      
+      var hasIpInformation = GLOBAL_VARIABLES.USER_IP_ADDRESS !== ""
 
       if (hasIpInformation) {
 
@@ -120,9 +132,8 @@ function runFunnelFunction() {  /* =============================================
 
         return;
       } else {
-        setTimeout(ifItIsFirstAcessSaveData, CHECKOUT_DELAY)
+        setTimeout(ifItIsFirstAcessSaveData, GLOBAL_VARIABLES.CHECKOUT_DELAY)
       }
-
 
     } else {
 
@@ -144,19 +155,33 @@ function runFunnelFunction() {  /* =============================================
 
   function storePagesLoop() { /* ========================================= */
 
-    if (!OTHER_PAGE_ALREADY) {
+    if (!GLOBAL_VARIABLES.OTHER_PAGE_ALREADY) {
 
-      OTHER_PAGE_ALREADY = true
+      GLOBAL_VARIABLES.OTHER_PAGE_ALREADY = true
       ifItIsFirstAcessSaveData()
       return;
 
     }
 
-    setTimeout(storePagesLoop, CHECKOUT_DELAY)
+    setTimeout(storePagesLoop, GLOBAL_VARIABLES.CHECKOUT_DELAY)
   }
 
-  function checkoutStepLoop() { /* ====================================== */
+  function checkoutStepLoop() { /* ================================================================================== */
 
+    // IMPORT GLOBAL OBJECTS ---------------------------------------------------
+    var HAS_CHECKED_IF_IS_FIRST_SESSION = GLOBAL_VARIABLES.HAS_CHECKED_IF_IS_FIRST_SESSION
+    var CHECKOUT_ALREADY = GLOBAL_VARIABLES.CHECKOUT_ALREADY
+
+    var objectToQuery = GLOBAL_FUNCTIONS.objectToQuery
+    var getCookie = GLOBAL_FUNCTIONS.getCookie
+    
+    var getCheckoutInfo = GLOBAL_FUNCTIONS.getCheckoutInfo
+    var updateCookie = GLOBAL_FUNCTIONS.updateCookie
+    var sendDataToApi = GLOBAL_FUNCTIONS.sendDataToApi
+    var fireFacebookEvent = GLOBAL_FUNCTIONS.fireFacebookEvent
+    var fireGoogleEvent = GLOBAL_FUNCTIONS.fireGoogleEvent
+
+    // -------------------------------------------------------------------------
     var pathname = window.location.pathname
 
     var isInCheckout = pathname === "/checkout"
@@ -165,16 +190,16 @@ function runFunnelFunction() {  /* =============================================
     var isInFinalization = pathname.search("finalization") > -1
     var maximum_funil_step = getCookie("LVT_funil_maximun_step")
 
-    if (!HAS_CHECKED_IF_IS_FIRST_SESSION) {
-      HAS_CHECKED_IF_IS_FIRST_SESSION = true
+    if (!GLOBAL_VARIABLES.HAS_CHECKED_IF_IS_FIRST_SESSION) {
+      GLOBAL_VARIABLES.HAS_CHECKED_IF_IS_FIRST_SESSION = true
       ifItIsFirstAcessSaveData()
     }
 
-    if (isInCheckout && !CHECKOUT_ALREADY) {
+    if (isInCheckout && !GLOBAL_VARIABLES.CHECKOUT_ALREADY) {
 
-      CHECKOUT_ALREADY = true
-      CURRENT_FUNIL_PAGE = "checkout_page"
-      console.log("\n" + "2 - " + CURRENT_FUNIL_PAGE + " -----------------------------------")
+      GLOBAL_VARIABLES.CHECKOUT_ALREADY = true
+      GLOBAL_VARIABLES.CURRENT_FUNIL_PAGE = "checkout_page"
+      console.log("\n" + "2 - " + GLOBAL_VARIABLES.CURRENT_FUNIL_PAGE + " -----------------------------------")
 
       var checkoutObj = getCheckoutInfo()
       var queryFromObj = objectToQuery(checkoutObj)
@@ -191,10 +216,10 @@ function runFunnelFunction() {  /* =============================================
 
     }
 
-    if (isInAddress && !ADDRESS_ALREADY) {
+    if (isInAddress && !GLOBAL_VARIABLES.ADDRESS_ALREADY) {
 
-      ADDRESS_ALREADY = true
-      CURRENT_FUNIL_PAGE = "address_page"
+      GLOBAL_VARIABLES.ADDRESS_ALREADY = true
+      GLOBAL_VARIABLES.CURRENT_FUNIL_PAGE = "address_page"
       console.log("\n" + "3 - " + CURRENT_FUNIL_PAGE + " -----------------------------------")
 
       var addressObj = getAddressInfo()
@@ -212,11 +237,11 @@ function runFunnelFunction() {  /* =============================================
 
     }
 
-    if (isInPayment && !PAYMENT_ALREADY) {
+    if (isInPayment && !GLOBAL_VARIABLES.PAYMENT_ALREADY) {
 
-      PAYMENT_ALREADY = true
-      CURRENT_FUNIL_PAGE = "payment_page"
-      console.log("\n" + "4 - " + CURRENT_FUNIL_PAGE + " -----------------------------------")
+      GLOBAL_VARIABLES.PAYMENT_ALREADY = true
+      GLOBAL_VARIABLES.CURRENT_FUNIL_PAGE = "payment_page"
+      console.log("\n" + "4 - " + GLOBAL_VARIABLES.CURRENT_FUNIL_PAGE + " -----------------------------------")
 
       var paymentObj = getPaymentInfo()
       var queryFromObj = objectToQuery(paymentObj)
@@ -233,11 +258,11 @@ function runFunnelFunction() {  /* =============================================
 
     }
 
-    if (isInFinalization && !FINALIZATION_ALREADY) {
+    if (isInFinalization && !GLOBAL_VARIABLES.FINALIZATION_ALREADY) {
 
-      FINALIZATION_ALREADY = true
-      CURRENT_FUNIL_PAGE = "purchase_page"
-      console.log("\n" + "5 - " + CURRENT_FUNIL_PAGE + " -----------------------------------")
+      GLOBAL_VARIABLES.FINALIZATION_ALREADY = true
+      GLOBAL_VARIABLES.CURRENT_FUNIL_PAGE = "purchase_page"
+      console.log("\n" + "5 - " + GLOBAL_VARIABLES.CURRENT_FUNIL_PAGE + " -----------------------------------")
 
       var purchaseObj = getPurchaseInfo()
       var queryFromObj = objectToQuery(purchaseObj)
@@ -254,7 +279,7 @@ function runFunnelFunction() {  /* =============================================
 
     }
 
-    setTimeout(checkoutStepLoop, CHECKOUT_DELAY)
+    setTimeout(checkoutStepLoop, GLOBAL_VARIABLES.CHECKOUT_DELAY)
   }
 
 
