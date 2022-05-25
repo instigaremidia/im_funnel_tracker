@@ -54,8 +54,8 @@ function runFunnelFunction() {  /* =============================================
   if (!IS_FIRST_SESSION) {
     IS_FIRST_SESSION = true
     GLOBAL_FUNCTIONS.getIpInfo()
-    GLOBAL_FUNCTIONS.saveCookie("LVT_is_first_session", false)
-    GLOBAL_FUNCTIONS.saveCookie("LVT_funil_maximun_step", 1)
+    GLOBAL_FUNCTIONS.saveCookie("LVT_is_first_session", false, GLOBAL_VARIABLES.COOKIE_DOMAIN)
+    GLOBAL_FUNCTIONS.saveCookie("LVT_funil_maximun_step", 1, GLOBAL_VARIABLES.COOKIE_DOMAIN)
   } else {
     COOKIE_IP = GLOBAL_FUNCTIONS.getCookie("LVT_ip")
   }

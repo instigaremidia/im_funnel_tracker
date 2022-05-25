@@ -38,7 +38,7 @@ function getCookie(name) { /* ==================================================
   return toReturn;
 }
 
-function saveCookie(cookieName, cookieValue) { /* =================================================================== */
+function saveCookie(cookieName, cookieValue, cookie_domain) { /* =================================================================== */
 
   var expirationTime = 2592000;
   expirationTime = expirationTime * 1000;
@@ -47,7 +47,7 @@ function saveCookie(cookieName, cookieValue) { /* ==============================
   date.setTime(dateTimeNow + expirationTime);
   var date = date.toUTCString();
 
-  document.cookie = cookieName + "=" + cookieValue + "; SameSite=None; Secure; expires=" + date + "; path=/; domain=." + COOKIE_DOMAIN; // location.hostname.replace(/^www\./i, "")
+  document.cookie = cookieName + "=" + cookieValue + "; SameSite=None; Secure; expires=" + date + "; path=/; domain=." + cookie_domain; // location.hostname.replace(/^www\./i, "")
 
 }
 
