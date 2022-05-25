@@ -22,6 +22,8 @@ function getDataLayerInfo(tagkey) { /* =========================================
 
 function getIpInfo() { /* =========================================================================================== */
 
+  var saveCookie = GLOBAL_FUNCTIONS.saveCookie
+
   var url = 'https://myip.wtf/json';
 
   fetch(url).then(function (response) {
