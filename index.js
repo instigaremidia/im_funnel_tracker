@@ -9,11 +9,14 @@ var GLOBAL_FUNCTIONS = {}
 var GLOBAL_LOADED_FUNCTIONS = 0
 
 var GLOBAL_FUNCTIONS_TO_IMPORT = [
-  ['cookies_functions', '/modules/cookies.js'],
-  ['queries_functions', '/modules/queries.js']
+  ['cookies', '/src/modules/cookies.js'],
+  ['queries', '/src/modules/queries.js'],
+  ['get_info', '/src/funnel/get_info.js'],
+  ['get_page_info', '/src/funnel/get_page_info.js'],
+  ['push_info', '/src/funnel/push_info.js']
 ]
 
-var GLOBAL_VARIABLES_TO_IMPORT = "/modules/variables.js"
+var GLOBAL_VARIABLES_TO_IMPORT = "/src/variables.js"
 
 /* ################################################################################################################################# */
 
@@ -44,9 +47,12 @@ function runWhenAllFunctionsAreReady(functionsArray, functionToRun){ /* ========
 
 /* ################################################################################################################################# */
 
-function setGlobalVariablesObject(variablesFilePath){
+function setGlobalVariablesObject(variablesFilePath){ /* ============================================================ */
   
-  getGithubFileContent(GLOBAL_VARIABLES.GITHUB_USER_NAME, GLOBAL_VARIABLES.GITHUB_REPO_NAME, variablesFilePath)
+  var GITHUB_USER_NAME = GLOBAL_VARIABLES.GITHUB_USER_NAME
+  var GITHUB_REPO_NAME = GLOBAL_VARIABLES.GITHUB_REPO_NAME
+
+  getGithubFileContent(GITHUB_USER_NAME, GITHUB_REPO_NAME, variablesFilePath)
   .then(function (raw) { return getFunctionsObject(raw) })
   .then(function (variablesObj) { 
     GLOBAL_VARIABLES = Object.assign(GLOBAL_VARIABLES, variablesObj);
@@ -55,8 +61,12 @@ function setGlobalVariablesObject(variablesFilePath){
 
 function addArrayFilesFunctionsToGlobalObject(filesArray) { /* ====================================================== */
 
+  var GITHUB_USER_NAME = GLOBAL_VARIABLES.GITHUB_USER_NAME
+  var GITHUB_REPO_NAME = GLOBAL_VARIABLES.GITHUB_REPO_NAME
+  
   for (var x = 0; x < filesArray.length; x++) {
-    getGithubFileContent(GLOBAL_VARIABLES.GITHUB_USER_NAME, GLOBAL_VARIABLES.GITHUB_REPO_NAME, filesArray[x][1])
+    var currentFilepath = filesArray[x][1]
+    getGithubFileContent(GITHUB_USER_NAME, GITHUB_REPO_NAME, currentFilepath)
       .then(function (raw) { return getFunctionsObject(raw) })
       .then(function (functionsObj) { 
         GLOBAL_FUNCTIONS = Object.assign(GLOBAL_FUNCTIONS, functionsObj);

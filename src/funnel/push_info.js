@@ -41,13 +41,13 @@ function sendDataToApi(method, queryUrl) { /* ==================================
   fetch(finalUrl).then(function (response) {
     return response.json()
   })
-    .then(function (data) {
+  .then(function (data) {
       // console.log(data)
-    })
-    .catch(function (data) {
-      console.log("DEU ERRO, TENTANDO DE NOVO")
-      sendDataToApi(method, queryUrl)
-    })
+  })
+  .catch(function (data) {
+    console.log("DEU ERRO, TENTANDO DE NOVO")
+    sendDataToApi(method, queryUrl)
+  })
 
 }
 
