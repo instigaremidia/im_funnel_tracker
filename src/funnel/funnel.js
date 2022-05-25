@@ -70,7 +70,7 @@ function runFunnelFunction() {  /* =============================================
   var hostname = window.location.hostname
   var pathname = window.location.pathname
 
-  if (hostname === CHECKOUT_URL) {
+  if (hostname === GLOBAL_VARIABLES.CHECKOUT_URL) {
 
     GLOBAL_VARIABLES.CURRENT_FUNIL_PAGE = "checkout_initial_page"
 
@@ -169,12 +169,8 @@ function runFunnelFunction() {  /* =============================================
   function checkoutStepLoop() { /* ================================================================================== */
 
     // IMPORT GLOBAL OBJECTS ---------------------------------------------------
-    var HAS_CHECKED_IF_IS_FIRST_SESSION = GLOBAL_VARIABLES.HAS_CHECKED_IF_IS_FIRST_SESSION
-    var CHECKOUT_ALREADY = GLOBAL_VARIABLES.CHECKOUT_ALREADY
-
     var objectToQuery = GLOBAL_FUNCTIONS.objectToQuery
     var getCookie = GLOBAL_FUNCTIONS.getCookie
-    
     var getCheckoutInfo = GLOBAL_FUNCTIONS.getCheckoutInfo
     var updateCookie = GLOBAL_FUNCTIONS.updateCookie
     var sendDataToApi = GLOBAL_FUNCTIONS.sendDataToApi
