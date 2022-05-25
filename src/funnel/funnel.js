@@ -15,6 +15,8 @@ function exportCurrentModule() { /* ============================================
 
 function runFunnelFunctionWhenReady() { /* =========================================================================== */
 
+  console.log("CHECKED!")
+  
   function checkConditions() {
 
     try {
