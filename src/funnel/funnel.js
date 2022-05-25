@@ -52,15 +52,14 @@ function runFunnelFunction() {  /* =============================================
   var getCookie = GLOBAL_FUNCTIONS.getCookie
   var getIpInfo = GLOBAL_FUNCTIONS.getIpInfo
   var saveCookie = GLOBAL_FUNCTIONS.saveCookie
-  var COOKIE_DOMAIN = GLOBAL_VARIABLES.COOKIE_DOMAIN
 
   // ######### CHECK IF IS FIRST SESSION ######################################################## //
-  IS_FIRST_SESSION = getCookie("LVT_is_first_session")
-  if (!IS_FIRST_SESSION) {
+  GLOBAL_VARIABLES.IS_FIRST_SESSION = getCookie("LVT_is_first_session")
+  if (!GLOBAL_VARIABLES.IS_FIRST_SESSION) {
     GLOBAL_VARIABLES.IS_FIRST_SESSION = true
     getIpInfo()
-    saveCookie("LVT_is_first_session", false, COOKIE_DOMAIN)
-    saveCookie("LVT_funil_maximun_step", 1, COOKIE_DOMAIN)
+    saveCookie("LVT_is_first_session", false, GLOBAL_VARIABLES.COOKIE_DOMAIN)
+    saveCookie("LVT_funil_maximun_step", 1, GLOBAL_VARIABLES.COOKIE_DOMAIN)
   } else {
     GLOBAL_VARIABLES.COOKIE_IP = getCookie("LVT_ip")
   }
