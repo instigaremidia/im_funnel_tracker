@@ -32,7 +32,7 @@ function getIpInfo() { /* ======================================================
   .then(function (data) {
     GLOBAL_VARIABLES.USER_IP_ADDRESS = data.YourFuckingIPAddress
     GLOBAL_VARIABLES.USER_LOCATION = data.YourFuckingLocation
-    saveCookie("LVT_ip", GLOBAL_VARIABLES.USER_IP_ADDRESS)
+    saveCookie("LVT_ip", GLOBAL_VARIABLES.USER_IP_ADDRESS, , GLOBAL_VARIABLES.COOKIE_DOMAIN)
     // pushEntryToDataLayer("LVT_ip_event", "LVT_ip", USER_IP_ADDRESS)
   })
 
