@@ -1,6 +1,19 @@
-runFunilFunctionWhenReady()
+/* ################################################################################################################################# */
 
-function runFunilFunctionWhenReady() {
+function exportCurrentModule() { /* ================================================================================= */
+
+  const exportObj = {
+    runFunnelFunctionWhenReady,
+    runFunnelFunction
+  }
+
+  return exportObj
+
+}
+
+/* ################################################################################################################################# */
+
+function runFunnelFunctionWhenReady() { /* =========================================================================== */
 
   function checkConditions() {
 
@@ -20,43 +33,23 @@ function runFunilFunctionWhenReady() {
   var shouldRunFunction = checkConditions()
 
   if (shouldRunFunction) {
-    runFunilFunction()
+    runFunnelFunction()
   } else {
     setTimeout(function () {
-      runFunilFunctionWhenReady()
+      runFunnelFunctionWhenReady()
     }, 1000)
   }
 
 }
 
-function runFunilFunction() {
+function runFunnelFunction() {  /* =================================================================================== */
 
   // ######### VARIABLES ######################################################################## //
 
   console.log("INIT FUNIL FUNCTION")
 
-  var API_URL = "https://instigaremidia.com/api/sheets"
-  var CHECKOUT_URL = "seguro.produtosdoamanha.com.br"
-  var COOKIE_DOMAIN = "produtosdoamanha.com.br"
-  var STORE_SHEET_NAME = "PDA"
-
-  var USER_IP_ADDRESS = ""
-  var USER_LOCATION = ""
-  var CHECKOUT_DELAY = 4000
-  var COOKIE_IP = ""
-  var IS_FIRST_SESSION = getCookie("LVT_is_first_session")
-
-  var CURRENT_FUNIL_PAGE = ""
-  var OTHER_PAGE_ALREADY = false;
-  var CHECKOUT_ALREADY = false;
-  var ADDRESS_ALREADY = false;
-  var PAYMENT_ALREADY = false;
-  var FINALIZATION_ALREADY = false;
-  var HAS_CHECKED_IF_IS_FIRST_SESSION = false;
-
-
   // ######### CHECK IF IS FIRST SESSION ######################################################## //
-
+  IS_FIRST_SESSION = getCookie("LVT_is_first_session")
   if (!IS_FIRST_SESSION) {
     IS_FIRST_SESSION = true
     getIpInfo()

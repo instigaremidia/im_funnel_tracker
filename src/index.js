@@ -11,9 +11,11 @@ var GLOBAL_LOADED_FUNCTIONS = 0
 var GLOBAL_FUNCTIONS_TO_IMPORT = [
   ['cookies', '/src/modules/cookies.js'],
   ['queries', '/src/modules/queries.js'],
+  
   ['get_info', '/src/funnel/get_info.js'],
+  ['push_info', '/src/funnel/push_info.js'],
   ['get_page_info', '/src/funnel/get_page_info.js'],
-  ['push_info', '/src/funnel/push_info.js']
+  ['get_page_info', '/src/funnel/funnel.js'],
 ]
 
 var GLOBAL_VARIABLES_TO_IMPORT = "/src/variables.js"
