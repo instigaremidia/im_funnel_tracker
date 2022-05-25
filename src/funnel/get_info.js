@@ -14,8 +14,8 @@ function exportCurrentModule() { /* ============================================
 
 /* ################################################################################################################################# */
 
-function getDataLayerInfo(tagkey) { /* ============================================================================== */
-  // {{ Container ID }}
+function getDataLayerInfo() { /* ==================================================================================== */
+  var tagkey = GLOBAL_VARIABLES.CONTAINER_ID
   var dataModel = window.google_tag_manager[tagkey].dataLayer.get({ split: function () { return []; } });
   return dataModel;
 }

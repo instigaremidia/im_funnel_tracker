@@ -2,7 +2,8 @@
 
 var GLOBAL_VARIABLES = {
   GITHUB_USER_NAME: "instigaremidia",
-  GITHUB_REPO_NAME: "gtm_tracker"
+  GITHUB_REPO_NAME: "gtm_tracker",
+  CONTAINER_ID: "GTM-MK7WLBD"
 }
 
 var GLOBAL_FUNCTIONS = {}
