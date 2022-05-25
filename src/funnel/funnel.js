@@ -50,14 +50,14 @@ function runFunnelFunction() {  /* =============================================
   console.log("INIT FUNIL FUNCTION")
 
   // ######### CHECK IF IS FIRST SESSION ######################################################## //
-  IS_FIRST_SESSION = getCookie("LVT_is_first_session")
+  IS_FIRST_SESSION = GLOBAL_FUNCTIONS.getCookie("LVT_is_first_session")
   if (!IS_FIRST_SESSION) {
     IS_FIRST_SESSION = true
-    getIpInfo()
-    saveCookie("LVT_is_first_session", false)
-    saveCookie("LVT_funil_maximun_step", 1)
+    GLOBAL_FUNCTIONS.getIpInfo()
+    GLOBAL_FUNCTIONS.saveCookie("LVT_is_first_session", false)
+    GLOBAL_FUNCTIONS.saveCookie("LVT_funil_maximun_step", 1)
   } else {
-    COOKIE_IP = getCookie("LVT_ip")
+    COOKIE_IP = GLOBAL_FUNCTIONS.getCookie("LVT_ip")
   }
 
   // ######### CHECK PAGE ####################################################################### //
