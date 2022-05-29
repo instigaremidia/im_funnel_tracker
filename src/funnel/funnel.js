@@ -171,6 +171,9 @@ function runFunnelFunction() {  /* =============================================
     var objectToQuery = GLOBAL_FUNCTIONS.objectToQuery
     var getCookie = GLOBAL_FUNCTIONS.getCookie
     var getCheckoutInfo = GLOBAL_FUNCTIONS.getCheckoutInfo
+    var getAddressInfo = GLOBAL_FUNCTIONS.getAddressInfo
+    var getPaymentInfo = GLOBAL_FUNCTIONS.getPaymentInfo
+    var getPurchaseInfo = GLOBAL_FUNCTIONS.getPurchaseInfo
     var updateCookie = GLOBAL_FUNCTIONS.updateCookie
     var sendDataToApi = GLOBAL_FUNCTIONS.sendDataToApi
     var fireFacebookEvent = GLOBAL_FUNCTIONS.fireFacebookEvent
