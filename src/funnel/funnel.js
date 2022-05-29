@@ -218,7 +218,7 @@ function runFunnelFunction() {  /* =============================================
 
       GLOBAL_VARIABLES.ADDRESS_ALREADY = true
       GLOBAL_VARIABLES.CURRENT_FUNIL_PAGE = "address_page"
-      console.log("\n" + "3 - " + CURRENT_FUNIL_PAGE + " -----------------------------------")
+      console.log("\n" + "3 - " + GLOBAL_VARIABLES.CURRENT_FUNIL_PAGE + " -----------------------------------")
 
       var addressObj = getAddressInfo()
       var queryFromObj = objectToQuery(addressObj)
