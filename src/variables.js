@@ -4,7 +4,7 @@ function exportCurrentModule() { /* ============================================
 
   var API_NAME = "TORA"
   var API_AGE = 32
-  var API_URL = "https://instigaremidia.com/api/sheets"
+  var API_URL = "https://instigare-backup.herokuapp.com/api/sheets" // instigaremidia.com
   var CHECKOUT_URL = "seguro.produtosdoamanha.com.br"
   var COOKIE_DOMAIN = "produtosdoamanha.com.br"
   var STORE_SHEET_NAME = "PDA"
