@@ -35,7 +35,7 @@ function fireGoogleEvent(eventName, eventObject) { /* ==========================
 
 function sendDataToApi(method, queryUrl) { /* ======================================================================= */
 
-  var finalUrl = GLOBAL_VARIABLES.API_URL + "?" + queryUrl // "/" + method +
+  var finalUrl = GLOBAL_VARIABLES.API_URL + "?" + `method=${method}` + "&" + queryUrl
   console.log(finalUrl)
 
   fetch(finalUrl).then(function (response) {
