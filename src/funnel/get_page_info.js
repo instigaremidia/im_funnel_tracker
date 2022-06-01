@@ -28,10 +28,10 @@ function getFirstAccessinfo() { /* =============================================
   var firstAccessObj = {}
 
   firstAccessObj['store_sheet'] = GLOBAL_VARIABLES.STORE_SHEET_NAME
-  firstAccessObj['ip'] = GLOBAL_VARIABLES.USER_IP_ADDRESS
-  firstAccessObj['location'] = GLOBAL_VARIABLES.USER_LOCATION
+  firstAccessObj['ipAddress'] = GLOBAL_VARIABLES.USER_IP_ADDRESS
+  firstAccessObj['ipLocation'] = GLOBAL_VARIABLES.USER_LOCATION
 
-  firstAccessObj['page'] = GLOBAL_VARIABLES.CURRENT_FUNIL_PAGE
+  firstAccessObj['funnelPage'] = GLOBAL_VARIABLES.CURRENT_FUNIL_PAGE
   firstAccessObj['date'] = dateInfo.currentDate
   firstAccessObj['time'] = dateInfo.currentTime
 
@@ -65,8 +65,8 @@ function getCheckoutInfo() { /* ================================================
   var checkoutObj = {}
 
   checkoutObj['store_sheet'] = GLOBAL_VARIABLES.STORE_SHEET_NAME
-  checkoutObj['ip'] = GLOBAL_VARIABLES.COOKIE_IP
-  checkoutObj['page'] = GLOBAL_VARIABLES.CURRENT_FUNIL_PAGE
+  checkoutObj['ipAddress'] = GLOBAL_VARIABLES.COOKIE_IP
+  checkoutObj['funnelPage'] = GLOBAL_VARIABLES.CURRENT_FUNIL_PAGE
   checkoutObj['date'] = dateInfo.currentDate
   checkoutObj['time'] = dateInfo.currentTime
 
@@ -84,8 +84,8 @@ function getAddressInfo() { /* =================================================
   var addressObj = {}
 
   addressObj['store_sheet'] = GLOBAL_VARIABLES.STORE_SHEET_NAME
-  addressObj['ip'] = GLOBAL_VARIABLES.COOKIE_IP
-  addressObj['page'] = GLOBAL_VARIABLES.CURRENT_FUNIL_PAGE
+  addressObj['ipAddress'] = GLOBAL_VARIABLES.COOKIE_IP
+  addressObj['funnelPage'] = GLOBAL_VARIABLES.CURRENT_FUNIL_PAGE
   addressObj['date'] = dateInfo.currentDate
   addressObj['time'] = dateInfo.currentTime
 
@@ -120,8 +120,8 @@ function getPaymentInfo() { /* =================================================
   var paymentObj = {}
 
   paymentObj['store_sheet'] = GLOBAL_VARIABLES.STORE_SHEET_NAME
-  paymentObj['ip'] = GLOBAL_VARIABLES.COOKIE_IP
-  paymentObj['page'] = GLOBAL_VARIABLES.CURRENT_FUNIL_PAGE
+  paymentObj['ipAddress'] = GLOBAL_VARIABLES.COOKIE_IP
+  paymentObj['funnelPage'] = GLOBAL_VARIABLES.CURRENT_FUNIL_PAGE
   paymentObj['date'] = dateInfo.currentDate
   paymentObj['time'] = dateInfo.currentTime
 
@@ -134,7 +134,7 @@ function getPaymentInfo() { /* =================================================
   shippingValue = shippingValue.split('\n')[0]
 
   paymentObj['cep'] = cepValue
-  paymentObj['frete'] = shippingValue
+  paymentObj['shippingMethod'] = shippingValue
 
   return paymentObj
 }
@@ -149,13 +149,13 @@ function getPurchaseInfo() { /* ================================================
   var purchaseObj = {}
 
   purchaseObj['store_sheet'] = GLOBAL_VARIABLES.STORE_SHEET_NAME
-  purchaseObj['ip'] = GLOBAL_VARIABLES.COOKIE_IP
-  purchaseObj['page'] = GLOBAL_VARIABLES.CURRENT_FUNIL_PAGE
+  purchaseObj['ipAddress'] = GLOBAL_VARIABLES.COOKIE_IP
+  purchaseObj['funnelPage'] = GLOBAL_VARIABLES.CURRENT_FUNIL_PAGE
   purchaseObj['date'] = dateInfo.currentDate
   purchaseObj['time'] = dateInfo.currentTime
 
-  purchaseObj['purchase'] = "SIM"
-  purchaseObj['payment_method'] = "?"
+  purchaseObj['hasPurchased'] = "SIM"
+  purchaseObj['paymentMethod'] = "?"
 
   return purchaseObj
 }
