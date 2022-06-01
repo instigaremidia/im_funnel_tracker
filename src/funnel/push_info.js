@@ -35,7 +35,12 @@ function fireGoogleEvent(eventName, eventObject) { /* ==========================
 
 function sendDataToApi(method, queryUrl) { /* ======================================================================= */
 
-  var finalUrl = GLOBAL_VARIABLES.API_URL + "?" + `method=${method}` + "&" + queryUrl
+  var SPREAD_ID = GLOBAL_VARIABLES.SPREAD_ID
+  var STORE_SHEET_NAME = GLOBAL_VARIABLES.STORE_SHEET_NAME
+  var API_URL = GLOBAL_VARIABLES.API_URL
+
+  var commomLink = API_URL + "?" + `spread_id=${SPREAD_ID}` + "&" + `sheet_name=${STORE_SHEET_NAME}`
+  var finalUrl = commomLink + "&" + `method=${method}` + "&" + queryUrl
   console.log(finalUrl)
 
   fetch(finalUrl).then(function (response) {

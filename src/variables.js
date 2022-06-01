@@ -4,11 +4,14 @@ function exportCurrentModule() { /* ============================================
 
   var API_NAME = "TORA"
   var API_AGE = 32
+
+  var SPREAD_ID = "1ed2mOWoQjc7Vicq-XqEVSDQONeFD4srjeLEuTbti-7M"
+  var STORE_SHEET_NAME = "PDA2"
   var API_URL = "https://script.google.com/macros/s/AKfycbxaAJBwji_UqcMMrCWX2AWzEDsSNSmAgKjCxv8ZcBchAB_s2MGDGSSlGEWRHfZ97sD7/exec"
+
   // "https://instigare-backup.herokuapp.com/api/sheets" // instigaremidia.com
   var CHECKOUT_URL = "seguro.produtosdoamanha.com.br"
   var COOKIE_DOMAIN = "produtosdoamanha.com.br"
-  var STORE_SHEET_NAME = "PDA"
 
   var USER_IP_ADDRESS = ""
   var USER_LOCATION = ""
@@ -27,10 +30,13 @@ function exportCurrentModule() { /* ============================================
   var exportObj = {
     API_NAME,
     API_AGE,
+    
+    SPREAD_ID,
     API_URL,
+    STORE_SHEET_NAME,
+
     CHECKOUT_URL,
     COOKIE_DOMAIN,
-    STORE_SHEET_NAME,
     
     USER_IP_ADDRESS,
     USER_LOCATION,
