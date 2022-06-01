@@ -49,9 +49,10 @@ function sendDataToApi(method, queryUrl) { /* ==================================
   .then(function (data) {
       // console.log(data)
   })
-  .catch(function (data) {
+  .catch(function (err) {
     console.log("DEU ERRO, TENTANDO DE NOVO")
-    sendDataToApi(method, queryUrl)
+    console.log(err)
+    // sendDataToApi(method, queryUrl)
   })
 
 }
