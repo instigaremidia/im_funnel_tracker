@@ -23,12 +23,9 @@ function exportCurrentModule() { /* ============================================
   var HAS_CHECKED_IF_IS_FIRST_SESSION = false;
 
   var exportObj = {
-    API_NAME,
-    API_AGE,
-    
     SPREAD_ID,
-    API_URL,
     STORE_SHEET_NAME,
+    API_URL,
 
     CHECKOUT_URL,
     COOKIE_DOMAIN,
