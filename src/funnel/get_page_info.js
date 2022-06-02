@@ -23,7 +23,6 @@ function getFirstAccessinfo() { /* =============================================
   var getQueryParams = GLOBAL_FUNCTIONS.getQueryParams
 
   var queryObj = getQueryParams()
-  var dataModel = getDataLayerInfo()
   var dateInfo = getDateInfo()
   var firstAccessObj = {}
 
@@ -72,6 +71,7 @@ function getCheckoutInfo() { /* ================================================
 
   checkoutObj['product'] = dataModel.items[0].group_name
   checkoutObj['price'] = dataModel.prices.total
+  checkoutObj['shopify_token'] = dataModel.token
 
   return checkoutObj
 }
